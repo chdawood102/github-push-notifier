@@ -1,0 +1,70 @@
+{
+  "name": "GitHub Push Notifier",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "github-push",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "e7cc76d3-2eb1-4a46-855a-fe5db5930978",
+      "name": "Webhook",
+      "webhookId": "6b02632c-9dec-4645-a195-629a24f1b8f1"
+    },
+    {
+      "parameters": {
+        "sendTo": "chdawood102@gmail.com",
+        "subject": "=🚀 New GitHub Push by {{ $json.body.pusher.name }}",
+        "message": "=Hi Dawood!  A new push just happened on GitHub.  Repository: {{ $json.body.repository.full_name }} Branch: {{ $json.body.ref }} Pushed by: {{ $json.body.pusher.name }} Commit message: {{ $json.body.head_commit.message }}  - Your GitHub Notifier Bot",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        208,
+        0
+      ],
+      "id": "d2dec409-f8d3-4982-8257-746f8a913e7e",
+      "name": "Send a message",
+      "webhookId": "1d8020ea-39d4-40bd-84cd-acd8cde58f76",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "DsGh9bl6dfpA0Fph",
+          "name": "Gmail OAuth2 API"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "29642e89-ecaa-4fef-9d4b-5c5126e135a9",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "bbea7c12379541417958e5e41e869385d7d8d118457228c61bdd96641f687f3f"
+  },
+  "id": "iTKdeyFt9eL7RA6n",
+  "tags": []
+}
